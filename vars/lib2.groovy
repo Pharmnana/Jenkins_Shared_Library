@@ -1,4 +1,10 @@
 def call(String stageID){
+
+  if("${stageID}" == "Test"){
+    echo "Testing with SonarQube"
+    sh "mvn sonar:sonar"
+    echo "Testing done"
+  }
   
     else if("${stageID}" == "Approval"){
         echo 'Seeking approval'
