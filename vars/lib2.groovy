@@ -28,13 +28,13 @@ def call(String stageID){
           }
     
     else if ("${stageID}" == "Success"){
-            echo "Deploying to ${env.DEPLOY_ENV} tomcat successful" 
+            echo "Deploying to Tomcat successful" 
             emailext  body: 'Hello Team Lead, the project titled ${JOB_NAME} located in ${JOB_URL} has been successfully deployed.' ,
                     subject: 'Deploy Success' ,
                     to: 'study@gmail.com, devopsnancy@gmail.com'
          }
     else if ("${stageID}" == "Failure"){
-      echo "Deploying to ${env.DEPLOY_ENV} failed"
+      echo "Deploying to Tomcat failed"
       emailext body: 'Hello Team Lead, unfortunately, the project titled ${JOB_NAME} located in ${JOB_URL} failed to deploy. Could you kindly give the team a few days to troubleshoot?' ,
               subject: 'Deploy failure' ,
               to: 'study@gmail.com, devopsnancy@gmail.com'
