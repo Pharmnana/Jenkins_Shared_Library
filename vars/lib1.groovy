@@ -10,7 +10,7 @@ def call(String stageName){
     sh "mvn sonar:sonar"
     echo "Testing done"
   }
-  else if("${stageName}" == "Store"){
+  else if("${stageName}" == "Deploy"){
     echo "Deploying to Nexus"
     sh "mvn deploy"
     echo "Deploying done"
