@@ -11,7 +11,7 @@ def call(String stageID){
         echo 'Sending email to team lead'
         emailext body: 'Hello Team Lead, I have just concluded the jenkins pipeline script and awaiting your authorization to deploy the project titled ${JOB_NAME} located in ${JOB_URL}' ,
                   subject: 'Approval request to deploy.' ,
-                  to: ${TEAM_LEAD_EMAILS}
+                  to: 'study@gmail.com, devopsnancy@gmail.com'
         timeout(time: 2, unit: "DAYS"){
         input message: 'Approve to deploy to production'
         }
