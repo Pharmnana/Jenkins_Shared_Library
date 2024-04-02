@@ -19,7 +19,7 @@ def call(String stageID){
 
     else if ("${stageID}" == "Staging"){
           echo 'Deploying to production tomcat_1'
-            deploy adapters: [tomcat9(credentialsId: 'tomcat_cred', path: '', url: ${env.STAGING_URL})], contextPath: null, war: 'target/*war'
+            deploy adapters: [tomcat9(credentialsId: 'tomcat_cred', path: '', url: 'http://35.183.198.83:8000/')], contextPath: null, war: 'target/*war'
           }
     
     else if ("${stageID}" == "Production"){
