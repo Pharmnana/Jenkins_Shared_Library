@@ -21,22 +21,17 @@ def call(String stageID){
             deploy adapters: [tomcat9(credentialsId: 'tomcat_cred', path: '', url: ${PRODUCTION_URL})], contextPath: null, war: 'target/*war'
           }
     
-    else if ("${stageID}" == "Post"){
-    always {
-      echo "I am done"
-    }
-    success {
-      echo "Deploying to ${env.DEPLOY_ENV} tomcat successful" 
-      emailext  body: 'Hello Team Lead, the project titled ${JOB_NAME} located in ${JOB_URL} has been successfully deployed.' ,
-          subject: 'Deploy Success' ,
-          to: ${TEAM_LEAD_EMAILS}
-    }
-    failure {
+    else if ("${stageID}" == "Success"){
+            echo "Deploying to ${env.DEPLOY_ENV} tomcat successful" 
+            emailext  body: 'Hello Team Lead, the project titled ${JOB_NAME} located in ${JOB_URL} has been successfully deployed.' ,
+                    subject: 'Deploy Success' ,
+                    to: ${TEAM_LEAD_EMAILS}
+         }
+    else if ("${stageID}" == "Failure"){
       echo "Deploying to ${env.DEPLOY_ENV} failed"
       emailext body: 'Hello Team Lead, unfortunately, the project titled ${JOB_NAME} located in ${JOB_URL} failed to deploy. Could you kindly give the team a few days to troubleshoot?' ,
               subject: 'Deploy failure' ,
               to: ${TEAM_LEAD_EMAILS}
     }
   }
-}
       
