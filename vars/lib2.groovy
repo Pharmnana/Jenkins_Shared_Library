@@ -1,6 +1,6 @@
 def call(String stageID){
   
-    if("${stageID}" == "Approval"){
+    else if("${stageID}" == "Approval"){
         echo 'Seeking approval'
         echo 'Sending email to team lead'
         emailext body: 'Hello Team Lead, I have just concluded the jenkins pipeline script and awaiting your authorization to deploy the project titled ${JOB_NAME} located in ${JOB_URL}' ,
